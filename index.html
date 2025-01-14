@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card Game Rules 1.1</title>
-	<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
 </head>
 <body>
     <header>
@@ -14,142 +15,171 @@
         <section id="general-rules">
             <h2>General Rules</h2>
             <ul>
-                <li><b>Setup:</b> Shuffle your deck and draw 5 cards to start. The player with the highest total <span style="color: #e91e63;">attack damage</span> goes first. If there's a tie or no attack damage, the player with the most <span style="color: #ffeb3b;">arrows</span> goes first.</li>
-                <li><b>Deck Composition:</b> Each deck must contain exactly <b style="color: #0288d1;">40 cards</b>, including at least <b style="color: #4caf50;">5 attack cards</b> and <b style="color: #f44336;">5 defense cards</b>. A maximum of 3 copies of any single card is allowed per deck.</li>
-                <li><b>Drawing Cards:</b> Players draw 5 cards at the start of the game and one additional card at the beginning of each turn.</li>
-                <li><b>Card Placement:</b> Place cards at the furthest spot from you, closest to the middle of the field.</li>
-                <li><b>Action Points:</b> Each player gets <b style="color: #ff9800;">3 action points</b> per round. Actions include:
-                    <ul class="action-points">
-                        <li>Playing a card - 1 action.</li>
-                        <li>Moving a card - 1 action.</li>
-                        <li>Attack - 1 action.</li>
-                        <li>Activating a card with an Active effect - 1 action.</li>
-                        <li>Drawing an extra card - 1 action (once per round only).</li>
-                        <li>Passing - 3 actions (discard your entire hand and draw that many new cards).</li>
-                    </ul>
-                </li>
+                <li><b>Setup:</b> Shuffle your deck and draw <span style="color: #4caf50;">5 cards</span> to start. The player with the highest total <span style="color: #e91e63;">attack damage</span> goes first. If there's a tie or no attack damage, the player with the most <span style="color: #ffeb3b;">arrows</span> goes first.</li>
+                <li><b>Deck Composition:</b> Each deck must contain exactly <b style="color: #0288d1;">40 cards</b>, including at least <b style="color: #4caf50;">5 attack cards</b> and <b style="color: #f44336;">5 defense cards</b>. A maximum of <b style="color: #ff9800;">3 copies</b> of any single card is allowed per deck.</li>
+                <li><b>Win Condition:</b> Each player starts with <b style="color: #ff9800;">3 hit points</b>. When they are <b style="color: #e91e63;">reduced to zero</b>, or you attempt to draw and your deck is <b style="color: #ffeb3b;">empty</b> you lose.</li>
+                <li><b>Drawing Cards:</b> Players draw <b style="color: #4caf50;">5 cards</b> at the start of the game and <b style="color: #4caf50;">one additional card</b> at the beginning of each turn.</li>
+                <li><b>Action Points:</b> Each player gets <b style="color: #ff9800;">3 action points</b> per round. Actions include:</li>
             </ul>
+            <table class="action-points-table">
+                <tr>
+                    <th>Cost</th>
+                    <th>Action</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>⚡</td>
+                    <td>Play a card</td>
+                    <td>Select a column on your side of the board and place a card from your hand in the space nearest to the center of the board within that column. Each card has an associated cost you must pay in order to play it. See <a href="#card-play-costs">Card Play Costs</a> for details.</td>
+                </tr>
+                <tr>
+                    <td>⚡</td>
+                    <td>Move a card</td>
+                    <td>Move a card to an empty space on your side of the field that the card has an arrow pointing to.</td>
+                </tr>
+                <tr>
+                    <td>⚡</td>
+                    <td><a href="#attacking-defending">Attack</a></td>
+                    <td>Attack an opponent's card with one of your cards.</td>
+                </tr>
+                <tr>
+                    <td>⚡</td>
+                    <td><a href="#card-layout .scrollActive">Activate</a></td>
+                    <td>Activate a card's Active effect.</td>
+                </tr>
+                <tr>
+                    <td>⚡</td>
+                    <td>Draw (once per round only)</td>
+                    <td>Draw one additional card from your deck.</td>
+                </tr>
+                <tr>
+                    <td>⚡⚡</td>
+                    <td>Swap</td>
+                    <td>Swap the position of 2 adjacent cards on the field provided they both have arrows in the direction they would be moving.</td>
+                </tr>
+                <tr>
+                    <td>⚡⚡</td>
+                    <td>Jump</td>
+                    <td>Move a card with an arrow pointing to and touching the right or left edge of the board to the space on the opposite side.</td>
+                </tr>
+                <tr>
+                    <td>⚡⚡⚡</td>
+                    <td>Reset</td>
+                    <td>Discard your entire hand and draw that many new cards.</td>
+                </tr>
+            </table>
         </section>
 
         <section id="card-layout">
-            <h2>Card Layout</h2>
-            <section id="card-diagram">
-                <section id="card-diagram">
-                    <div class="diagram-container">
-                        <img src="hydrogen.jpg" alt="Card Diagram" class="diagram-image">
-                        <div class="arrow arrow-top-left">Card Tier</div>
-                        <div class="arrow arrow-bottom-left">Archetype</div>
-                        <div class="arrow arrow-edge-right">The colour of the border coresponds with the <br> cards type as per the diagram below.</div>
-                        <div class="arrow arrow-centre">This indicates the attack and defence values of the card.</div>
-                        <div class="arrow arrow-lower-third-centre">This indicates whether or not the card has an effect, if there <br> is no effect there will be italicized flavour text that does not affect the function of the card.</div>
+            <h2>Card Layout - Hover for Details</h2>
+            <section id="test-card">
+                <div class="stepmother-outer-border">
+                    <div class="stepmother-outer-border-hover-area"></div>
+                    <div class="stepmother-inner-border">
+                        <div class="stepmother-card-content">
+                            <div class="stepmother-card-number">2</div>
+                            <div class="stepmother-title">Stepmother</div>
+                            <div class="stepmother-art-placeholder">
+                                <img src="Stepmother.png" alt="Stepmother Art" class="stepmother-art-image">
+                            </div>
+                            <div class="stepmother-stats">Attack: 1 &nbsp;&nbsp; Defence: 1</div>
+                            <div class="stepmother-arrow-right"></div>
+                            <div class="stepmother-arrow-down"></div>
+                            <div class="stepmother-trigger">
+                                <strong>Trigger:</strong> <u>When a <b>Coughing Baby</b> is destroyed by an enemy attack</u>
+                                <b>permanently</b> increase this card's defence by 1.
+                            </div>
+                            <div class="stepmother-active">
+                                <strong>Active:</strong> You can destroy this card to play a number of 
+                                <b>Coughing Baby</b> cards from your discard pile equal to this card's current defence.
+                            </div>
+                            <div class="stepmother-family">FAMILY</div>
+                        </div>
                     </div>
-                </section>
-            <table>
-                <tr>
-                    <th>Mechanic Type</th>
-                    <th>Color</th>
-                </tr>
-                <tr>
-                    <td>Linked</td>
-                    <td><span class="mechanic-type linked">Purple</span></td>
-                </tr>
-                <tr>
-                    <td>Trigger</td>
-                    <td><span class="mechanic-type trigger">Blue</span></td>
-                </tr>
-                <tr>
-                    <td>Passive</td>
-                    <td><span class="mechanic-type passive">Green</span></td>
-                </tr>
-                <tr>
-                    <td>Active</td>
-                    <td><span class="mechanic-type active">Orange</span></td>
-                </tr>
-                <tr>
-                    <td>Normal/Token</td>
-                    <td><span class="mechanic-type normal">Grey</span></td>
-                </tr>
-            </table>
+                </div>
+            </section>
+                <table class="mechanic-type-table">
+                    <tr>
+                        <th>Mechanic Type</th>
+                        <th>Color</th>
+                    </tr>
+                    <tr>
+                        <td><b>Linked:</b> This card's effect only occurs when the card's arrow is pointing to another card's arrow.</td>
+                        <td class="linked">Purple</td>
+                    </tr>
+                    <tr>
+                        <td><b>Trigger:</b> This cards effect only occurs when a certain condition is met, which is underlined on the card.</td>
+                        <td class="trigger">Blue</td>
+                    </tr>
+                    <tr>
+                        <td><b>Passive:</b> This cards effect is always active, and does not require any conditions to be met.</td>
+                        <td class="passive">Green</td>
+                    </tr>
+                    <tr>
+                        <td class="scrollActive" <b>Active:</b> This cards effect can only occur when the player uses an action cause it. Each card can only have their effect activated once per turn.</td>
+                        <td class="active">Orange</td>
+                    </tr>
+                    <tr>
+                        <td><b>Normal/Token:</b> These cards have no effect. Tokens are cards that are not in your deck, but are instead created by other cards. They are destroyed instantly when attacked.</td>
+                        <td class="normal">Grey</td>
+                    </tr>
+                </table>
 
             </section>
-            <ul>
-                <li>The number in the top left corner indicates the card's <b>tier</b>.</li>
-                <li>The text above the card art indicates the card's <b>name</b>.</li>
-                <li>The first line below the card art indicates a card's <b>attack</b> and <b>defense</b> stat. Tokens do not have this line.</li>
-                <li>The text below the attack and defense indicates the card's <b>effects</b>, if any. If it has no effect, it will have flavor text that does not affect the outcome of the card.</li>
-                <li>In the bottom left of the card is a card's <b>tags</b>. Tags define a card's category and determine certain effects.</li>
-            </ul>
         </section>
-
         <section id="attacking-defending">
             <h2>Attacking and Defending</h2>
             <ul>
-                <li>Cards can attack when they are in the <b style="color: #ff9800;">front row</b> and can target the next enemy card in front of them.</li>
-                <li>If there is a card in the <b style="color: #0288d1;">2nd row</b> and there's an empty space between your card and the opponent's, you can attack it. Same goes for the <b style="color: #0288d1;">3rd row</b> and 2 spaces between your card and the opponent's.</li>
-                <li>Each card has an <b>attack</b> and a <b>defense</b> stat. Resolve as follows:
+                <li><b>Positioning: </b>Cards can attack when they are in the <b style="color: #ff9800;">front row</b> and have an attack greater than 0. Cards can target the next enemy card in front of them.</li>
+                <li><span class="subtext">If there is a card in the <b style="color: #32cd32;">2nd row</b> and there's an empty space between your card and the opponent's, you can attack it. Same goes for the <b style="color: #32cd32;">3rd row</b> and 2 spaces between your card and the opponent's.<br>If there are no cards in the column in front of your card, it can attack your opponent directly, reducing their hit-points by 1. You can only attack directly once per turn.</span></li>
+                <li>When an <b>attack</b> is made, you compare your cards attack, to the target cards defence:
                     <ul>
-                        <li>Equal attack and defense: <b style="color: #e91e63;">Both cards are destroyed</b>.</li>
-                        <li>Attack greater than defense: <b style="color: #4caf50;">Only the defending card is destroyed</b>.</li>
-                        <li>Attack lesser than defense: <b style="color: #f44336;">Only the attacking card is destroyed</b>.</li>
+                        <li id="equal">If the cards have equal attack and defence: <b style="color: #e91e63;">Destroy both your card and the target.</b></li>
+                        <li id="sword">If your cards attack is greater than the target cards defence: <b style="color: #4caf50;">Destroy the target.</b></li>
+                        <li id="destroy">If your cards attack is lower the targets defence: <b style="color: #f44336;">Destroy your card.</b></li>
                     </ul>
                 </li>
-                <li>The player who goes first cannot attack.</li>
-                <li>You can only attack <b style="color: #e91e63;">directly once per turn</b>.</li>
+                <li><b>Restrictions: </b>Cards that have <b style="color:#32cd32;">been played this turn</b>, or cards that have <b style="color: #e91e63;">destroyed a card that has attacked this turn</b> in order to be played cannot attack until the <b style="color:#ff9800;">start of your next turn.</b></b></li>
             </ul>
         </section>
-
-        <section id="card-effects">
-            <h2>Card Effects</h2>
-            <ul>
-                <li><b>Active:</b> Requires an action to activate.</li>
-                <li><b>Passive:</b> Always active.</li>
-                <li><b>Trigger:</b> Activates under specific conditions.</li>
-                <li><b>Linked:</b> Activated only when linked to another card.</li>
-            </ul>
-        </section>
-
-        <section id="resolution-of-effects">
-            <h2>Resolution of Effects</h2>
-            <p>Effects resolve back and forth after each action that affects an opponent until the turn is complete.</p>
-        </section>
-
         <section id="card-play-costs">
             <h2>Card Play Costs</h2>
-            <ul>
-                <li>Cards are categorized into 5 tiers (0, 1, 2, 3, 4 and Tokens), affecting their play cost:</li>
-                <li>A token is a type of card that does not go in your deck. You can have an unlimited amount of them on the field and you are only limited by how many your cards can "Create".</li>
-                <li>Tokens have no attack or defense.</li>
-                <li>When a card says "Create" you play a card that does not exist in your deck such as a Token.</li>
-                <li>Tier 0 cards are free to play.</li>
-                <li>Tier 1 cards require destroying another card to play. Destroying a card sends it to the discard pile. To destroy a card, it must be in play on your side of the field.</li>
-                <li>Higher tier cards require destroying cards whose total tier equals the tier of the card you wish to play or a number of cards equal to the tier of the card.
-                    <ul>
-                        <li>e.g., To play a tier 4 card, you would need to destroy one of the following:
-                            <ul>
-                                <li>Any 4 cards</li>
-                                <li>2 x Tier 2 cards</li>
-                                <li>1 x Tier 1 + 1 x Tier 3</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+            <p>Cards are categorized into 5 tiers (0, 1, 2, 3, 4, and Tokens), affecting their play cost:</p>
+            <ul class="card-tiers">
+                <li><b>Tokens:</b> Tokens do not go in your deck. You can have an unlimited amount on the field, limited only by how many your cards can "Create". Tokens have no attack or defense.</li>
+                <li><b>Tier 0:</b> Free to play.</li>
+                <li><b>Tier 1:</b> Requires destroying another card to play. Destroying a card sends it to the discard pile. The card must be in play on your side of the field.</li>
+                <li><b>Higher Tiers:</b> Require destroying cards whose total tier equals the tier of the card you wish to play, or a number of cards equal to the tier of the card. <br>For example, to play a Tier 4 card, you would need to destroy one of the following:</li>
             </ul>
-        </section>
-
-        <section id="arrows">
-            <h2>Arrows</h2>
-            <ul>
-                <li><b>Movement and Effects:</b> Arrows indicate possible movement and effect directions.</li>
-                <li><b>Jumping:</b> If an arrow points to the edge of the field, spend two actions to jump to the opposite side.</li>
-                <li><b>Restrictions:</b> Cards cannot affect or cross the center line even if their arrow points towards it.</li>
-            </ul>
-            <p>Cards are considered linked if their arrows touch on any side, which can activate certain effects.</p>
-        </section>
-
-        <section id="win-condition">
-            <h2>Win Condition</h2>
-            <p>Each player starts with <b style="color: #f44336;">3 hit points</b>. Direct attacks are possible if a card with attack is in the front row and faces a column without defense cards. <b>Hit points</b> are lost by direct attacks, and the game ends when a player reaches <b>0 hit points</b>.</p>
+            <div class="card-diagrams">
+                <div class="card-diagram">
+                    <div class="diagram-description">Any 4 cards</div>
+                    <div class="card-container">
+                        <div class="card"><span class="card-number">?</span></div>
+                        <div class="card"><span class="card-number">?</span></div>
+                        <div class="card"><span class="card-number">?</span></div>
+                        <div class="card"><span class="card-number">?</span></div>
+                    </div>
+                </div>
+                <div class="card-diagram">
+                    <div class="diagram-description">Two Tier 2 cards</div>
+                    <div class="card-container">
+                        <div class="card"><span class="card-number">2</span></div>
+                        <div class="card"><span class="card-number">2</span></div>
+                    </div>
+                </div>
+                <div class="card-diagram">
+                    <div class="diagram-description">One Tier 1 and One Tier 3</div>
+                    <div class="card-container">
+                        <div class="card"><span class="card-number">1</span></div>
+                        <div class="card"><span class="card-number">3</span></div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="script.js"></script>
 </body>
 </html>
