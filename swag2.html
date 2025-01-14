@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Game Rules</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, #333333, #111111);
+            color: #f4f4f9;
+            line-height: 1.6;
+            animation: backgroundPulse 5s infinite alternate;
+        }
+
+        @keyframes backgroundPulse {
+            0% { background: radial-gradient(circle, #333333, #111111); }
+            100% { background: radial-gradient(circle, #444444, #222222); }
+        }
+
+        header {
+            background: linear-gradient(to right, #ff00cc, #333399);
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            animation: glowHeader 3s infinite;
+        }
+
+        @keyframes glowHeader {
+            0% { text-shadow: 2px 2px 8px #ff00cc; }
+            50% { text-shadow: 2px 2px 8px #ff0099; }
+            100% { text-shadow: 2px 2px 8px #333399; }
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #fff;
+        }
+
+        h2 {
+            color: #ffcc00;
+            text-shadow: 2px 2px 4px #000;
+            border-bottom: 3px solid #ffcc00;
+            padding-bottom: 5px;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        ul {
+            margin: 0;
+            padding: 0 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        li:hover {
+            transform: scale(1.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            animation: fadeIn 2s;
+        }
+
+        th, td {
+            border: 1px solid #555;
+            text-align: left;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            background: linear-gradient(to bottom, #ffcc00, #cc9900);
+            color: #000;
+            text-shadow: 1px 1px 1px #fff;
+        }
+
+        .mechanic-type {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 5px 0;
+            color: #fff;
+            border-radius: 3px;
+            font-weight: bold;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+            animation: mechanicGlow 3s infinite alternate;
+        }
+
+        .linked { background: #9c27b0; }
+        .trigger { background: #2196f3; }
+        .passive { background: #4caf50; }
+        .active { background: #ff9800; }
+        .normal { background: #9e9e9e; }
+
+        @keyframes mechanicGlow {
+            0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+            100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.9); }
+        }
+
+        .highlight {
+            background: linear-gradient(to right, #ffeb3b, #ff9800);
+            border-left: 6px solid #ff9800;
+            padding: 15px;
+            margin: 10px 0;
+            color: #000;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px #fff;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        li::marker {
+            content: '⚡';
+            color: #ff9800;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Card Game Rules</h1>
+    </header>
+    <main>
+        <section id="general-rules">
+            <h2>General Rules</h2>
+            <ul>
+                <li><b>Setup:</b> Shuffle your deck and draw 5 cards to start. The player with the highest total <span style="color: #e91e63;">attack damage</span> goes first. If there's a tie or no attack damage, the player with the most <span style="color: #ffeb3b;">arrows</span> goes first.</li>
+                <li><b>Deck Composition:</b> Each deck must contain exactly <b style="color: #0288d1;">40 cards</b>, including at least <b style="color: #4caf50;">5 attack cards</b> and <b style="color: #f44336;">5 defense cards</b>. A maximum of 3 copies of any single card is allowed per deck.</li>
+                <li><b>Drawing Cards:</b> Players draw 5 cards at the start of the game and one additional card at the beginning of each turn.</li>
+                <li><b>Card Placement:</b> Place cards at the furthest spot from you, closest to the middle of the field.</li>
+                <li><b>Action Points:</b> Each player gets <b style="color: #ff9800;">3 action points</b> per round. Actions include:
+                    <ul>
+                        <li>Playing a card - 1 action.</li>
+                        <li>Moving a card - 1 action.</li>
+                        <li>Attack - 1 action.</li>
+                        <li>Activating a card with an Active effect - 1 action.</li>
+                        <li>Drawing an extra card - 1 action (once per round only).</li>
+                        <li>Passing - 3 actions (discard your entire hand and draw that many new cards).</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section id="card-layout">
+            <h2>Card Layout</h2>
+            <table>
+                <tr>
+                    <th>Mechanic Type</th>
+                    <th>Color</th>
+                </tr>
+                <tr>
+                    <td>Linked</td>
+                    <td><span class="mechanic-type linked">Purple</span></td>
+                </tr>
+                <tr>
+                    <td>Trigger</td>
+                    <td><span class="mechanic-type trigger">Blue</span></td>
+                </tr>
+                <tr>
+                    <td>Passive</td>
+                    <td><span class="mechanic-type passive">Green</span></td>
+                </tr>
+                <tr>
+                    <td>Active</td>
+                    <td><span class="mechanic-type active">Orange</span></td>
+                </tr>
+                <tr>
+                    <td>Normal/Token</td>
+                    <td><span class="mechanic-type normal">Grey</span></td>
+                </tr>
+            </table>
+            <ul>
+                <li>The number in the top left corner indicates the card's <b>tier</b>.</li>
+                <li>The text above the card art indicates the card's <b>name</b>.</li>
+                <li>The first line below the card art indicates a card's <b>attack</b> and <b>defense</b> stat. Tokens do not have this line.</li>
+                <li>The text below the attack and defense indicates the card's <b>effects</b>, if any. If it has no effect, it will have flavor text that does not affect the outcome of the card.</li>
+                <li>In the bottom left of the card is a card's <b>tags</b>. Tags define a card's category and determine certain effects.</li>
+            </ul>
+        </section>
+
+        <section id="attacking-defending">
+            <h2>Attacking and Defending</h2>
+            <ul>
+                <li>Cards can attack when they are in the <b style="color: #ff9800;">front row</b> and can target the next enemy card in front of them.</li>
+                <li>If there is a card in the <b style="color: #0288d1;">2nd row</b> and there's an empty space between your card and the opponent's, you can attack it. Same goes for the <b style="color: #0288d1;">3rd row</b> and 2 spaces between your card and the opponent's.</li>
+                <li>Each card has an <b>attack</b> and a <b>defense</b> stat. Resolve as follows:
+                    <ul>
+                        <li>Equal attack and defense: <b style="color: #e91e63;">Both cards are destroyed</b>.</li>
+                        <li>Attack greater than defense: <b style="color: #4caf50;">Only the defending card is destroyed</b>.</li>
+                        <li>Attack lesser than defense: <b style="color: #f44336;">Only the attacking card is destroyed</b>.</li>
+                    </ul>
+                </li>
+                <li>The player who goes first cannot attack.</li>
+                <li>You can only attack <b style="color: #e91e63;">directly once per turn</b>.</li>
+            </ul>
+        </section>
+
+        <section id="card-effects">
+            <h2>Card Effects</h2>
+            <ul>
+                <li><b>Active:</b> Requires an action to activate.</li>
+                <li><b>Passive:</b> Always active.</li>
+                <li><b>Trigger:</b> Activates under specific conditions.</li>
+                <li><b>Linked:</b> Activated only when linked to another card.</li>
+            </ul>
+        </section>
+
+        <section id="resolution-of-effects">
+            <h2>Resolution of Effects</h2>
+            <p>Effects resolve back and forth after each action that affects an opponent until the turn is complete.</p>
+        </section>
+
+        <section id="card-play-costs">
+            <h2>Card Play Costs</h2>
+            <ul>
+                <li>Cards are categorized into 5 tiers (0, 1, 2, 3, 4 and Tokens), affecting their play cost:</li>
+                <li>A token is a type of card that does not go in your deck. You can have an unlimited amount of them on the field and you are only limited by how many your cards can "Create".</li>
+                <li>Tokens have no attack or defense.</li>
+                <li>When a card says "Create" you play a card that does not exist in your deck such as a Token.</li>
+                <li>Tier 0 cards are free to play.</li>
+                <li>Tier 1 cards require destroying another card to play. Destroying a card sends it to the discard pile. To destroy a card, it must be in play on your side of the field.</li>
+                <li>Higher tier cards require destroying cards whose total tier equals the tier of the card you wish to play or a number of cards equal to the tier of the card.
+                    <ul>
+                        <li>e.g., To play a tier 4 card, you would need to destroy one of the following:
+                            <ul>
+                                <li>Any 4 cards</li>
+                                <li>2 x Tier 2 cards</li>
+                                <li>1 x Tier 1 + 1 x Tier 3</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section id="arrows">
+            <h2>Arrows</h2>
+            <ul>
+                <li><b>Movement and Effects:</b> Arrows indicate possible movement and effect directions.</li>
+                <li><b>Jumping:</b> If an arrow points to the edge of the field, spend two actions to jump to the opposite side.</li>
+                <li><b>Restrictions:</b> Cards cannot affect or cross the center line even if their arrow points towards it.</li>
+            </ul>
+            <p>Cards are considered linked if their arrows touch on any side, which can activate certain effects.</p>
+        </section>
+
+        <section id="win-condition">
+            <h2>Win Condition</h2>
+            <p>Each player starts with <b style="color: #f44336;">3 hit points</b>. Direct attacks are possible if a card with attack is in the front row and faces a column without defense cards. <b>Hit points</b> are lost by direct attacks, and the game ends when a player reaches <b>0 hit points</b>.</p>
+        </section>
+    </main>
+</body>
+</html>
