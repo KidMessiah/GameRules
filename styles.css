@@ -179,20 +179,20 @@ p, ul {
 
 .arrow-edge-right {
     top: 50%;
-    right: -150px; /* Adjust as needed */
+    right: -400px; /* Adjust as needed */
     transform: translateY(-50%);
 }
 
 .arrow-edge-right::before {
     top: 50%;
     right: 100%;
-    width: 150px; /* Extend line */
+    width: 50px; /* Extend line */
     height: 0;
 }
 
 .arrow-edge-right::after {
-    top: 50%;
-    right: 100%;
+    top: 38%;
+    right: 115%;
     border-right-color: rgba(0, 0, 0, 0.7);
 }
 
