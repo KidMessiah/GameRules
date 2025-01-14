@@ -105,17 +105,18 @@ p, ul {
     margin: 10px 0;
 }
 /* Diagram style */
-
 .diagram-container {
     position: relative;
-    max-width: 900px;
+    max-width: 400px; /* Adjust the size of the card */
     margin: 20px auto;
+    text-align: center;
 }
 
 .diagram-image {
     width: 100%;
     height: auto;
     display: block;
+    margin: 0 auto;
 }
 
 .arrow {
@@ -141,38 +142,38 @@ p, ul {
 }
 
 .arrow-top-left {
-    top: 5%;
-    left: -400px; /* Adjust as needed */
+    top: 4.5%;
+    left: -120px; /* Adjust as needed */
 }
 
 .arrow-top-left::before {
-    top: 50%;
+    top: 45%;
     left: 100%;
-    width: 150px; /* Extend line */
+    width: 50px; /* Extend line */
     height: 0;
 }
 
 .arrow-top-left::after {
-    top: 25%;
-    left: 145%;
+    top: 20%;
+    left: 160%;
     border-left-color: rgba(0, 0, 0, 0.7);
 }
 
 .arrow-bottom-left {
-    bottom: 2.5%;
-    left: -250px; /* Adjust as needed */
+    bottom: 1%;
+    left: -120px; /* Adjust as needed */
 }
 
 .arrow-bottom-left::before {
     top: 50%;
     left: 100%;
-    width: 150px; /* Extend line */
+    width: 85px; /* Extend line */
     height: 0;
 }
 
 .arrow-bottom-left::after {
     top: 25%;
-    left: 160%;
+    left: 193%;
     border-left-color: rgba(0, 0, 0, 0.7);
 }
 
