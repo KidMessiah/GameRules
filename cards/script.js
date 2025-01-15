@@ -2,9 +2,7 @@ class CardManager {
     constructor() {
         this.cards = [];
         this.container = document.getElementById('cardGrid');
-        // Change to relative path
-        this.baseUrl = './data';
-        this.loadCardsFromDirectory();
+        this.loadCardsFromJson();
         
         // Add placeholder image data URL
         this.placeholderImage = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
@@ -20,51 +18,22 @@ class CardManager {
         this.setupOverlay();
     }
 
-    parseFileName(fileName) {
-        // Remove file extension
-        const nameWithoutExt = fileName.replace(/\.[^/.]+$/, "");
-        const [name, tier, tag] = nameWithoutExt.split('-');
-        
-        return {
-            fileName,
-            name,
-            tier,
-            tag,
-            imagePath: fileName
-        };
-    }
-
-    async loadCardsFromDirectory() {
+    async loadCardsFromJson() {
         try {
-            // Get list of files from data directory
-            const response = await fetch(this.baseUrl);
-            const files = await response.text();
-            
-            // Parse HTML response to get image files
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(files, 'text/html');
-            const imageFiles = Array.from(doc.querySelectorAll('a'))
-                .map(a => a.href)
-                .filter(href => href.match(/\.(jpg|jpeg|png)$/i))
-                .map(href => href.split('/').pop());
-
-            // Parse each filename into card data
-            this.cards = imageFiles.map(fileName => {
-                const cardData = this.parseFileName(fileName);
-                return {
-                    ...cardData,
-                    imagePath: `${this.baseUrl}/${fileName}`
-                };
-            });
-
+            const response = await fetch('cards.json');
+            if (!response.ok) {
+                throw new Error('Failed to fetch cards.json');
+            }
+            // Remove the last two example cards from the loaded data
+            this.cards = (await response.json()).filter(card => 
+                !card.name.startsWith('Example Card')
+            );
             console.log('Cards loaded:', this.cards);
             this.renderCards();
-            
-            // Update filter options based on found tags
             this.updateFilterOptions();
         } catch (error) {
             console.error('Failed to load cards:', error);
-            this.container.innerHTML = '<p>Error loading cards. Please try again later.</p>';
+            this.container.innerHTML = '<p>Error loading cards: ' + error.message + '</p>';
         }
     }
 
