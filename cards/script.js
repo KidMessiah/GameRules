@@ -2,7 +2,8 @@ class CardManager {
     constructor() {
         this.cards = [];
         this.container = document.getElementById('cardGrid');
-        this.baseUrl = 'data';
+        // Change to relative path
+        this.baseUrl = './data';
         this.loadCardsFromDirectory();
         
         // Add placeholder image data URL
