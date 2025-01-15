@@ -459,6 +459,29 @@ a:hover {
     transform: scale(1.1);
 }
 
+/* Navigation button style */
+.nav-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    background-color: var(--background);
+    color: var(--text);
+    border: 2px solid var(--action);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.nav-button:hover {
+    background-color: var(--action);
+    color: var(--background);
+    transform: scale(1.1);
+}
+
 /* Additional styles moved from HTML */
 .header-container {
     display: flex;

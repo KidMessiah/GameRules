@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Game Database</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Card Database</h1>
+            <div class="search-section">
+                <input type="text" id="searchInput" placeholder="Search cards...">
+                <select id="filterType">
+                    <option value="all">All Types</option>
+                    <option value="Dinosaur">Dinosaur</option>
+                    <!-- Add more options based on your actual card types -->
+                </select>
+                <select id="filterTier">
+                    <option value="all">All Tiers</option>
+                </select>
+                <button id="searchButton">Search</button>
+            </div>
+        </header>
+        <main>
+            <div id="cardGrid"></div>
+        </main>
+    </div>
+    <div id="overlay" class="overlay">
+        <img src="" alt="Enlarged card">
+    </div>
+    <script src="script.js" defer></script>
+</body>
+</html>
