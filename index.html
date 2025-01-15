@@ -6,6 +6,7 @@
     <title>Card Game Rules 0.4</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.3.2/pixi.min.js"></script>
 </head>
 <body>
     <header>
@@ -72,58 +73,33 @@
 
         <section id="card-layout">
             <h2>Card Layout - Hover for Details</h2>
-            <section id="test-card">
-                <div class="stepmother-outer-border">
-                    <div class="stepmother-outer-border-hover-area"></div>
-                    <div class="stepmother-inner-border">
-                        <div class="stepmother-card-content">
-                            <div class="stepmother-card-number">2</div>
-                            <div class="stepmother-title">Stepmother</div>
-                            <div class="stepmother-art-placeholder">
-                                <img src="Stepmother.png" alt="Stepmother Art" class="stepmother-art-image">
-                            </div>
-                            <div class="stepmother-stats">Attack: 1 &nbsp;&nbsp; Defence: 1</div>
-                            <div class="stepmother-arrow-right"></div>
-                            <div class="stepmother-arrow-down"></div>
-                            <div class="stepmother-trigger">
-                                <strong>Trigger:</strong> <u>When a <b>Coughing Baby</b> is destroyed by an enemy attack</u>
-                                <b>permanently</b> increase this card's defence by 1.
-                            </div>
-                            <div class="stepmother-active">
-                                <strong>Active:</strong> You can destroy this card to play a number of 
-                                <b>Coughing Baby</b> cards from your discard pile equal to this card's current defence.
-                            </div>
-                            <div class="stepmother-family">FAMILY</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-                <table class="mechanic-type-table">
-                    <tr>
-                        <th>Mechanic Type</th>
-                        <th>Color</th>
-                    </tr>
-                    <tr>
-                        <td><b>Linked:</b> This card's effect only occurs when the card's arrow is pointing to another card's arrow.</td>
-                        <td class="linked">Purple</td>
-                    </tr>
-                    <tr>
-                        <td><b>Trigger:</b> This cards effect only occurs when a certain condition is met, which is underlined on the card.</td>
-                        <td class="trigger">Blue</td>
-                    </tr>
-                    <tr>
-                        <td><b>Passive:</b> This cards effect is always active, and does not require any conditions to be met.</td>
-                        <td class="passive">Green</td>
-                    </tr>
-                    <tr>
-                        <td class="scrollActive" <b>Active:</b> This cards effect can only occur when the player uses an action cause it. Each card can only have their effect activated once per turn.</td>
-                        <td class="active">Orange</td>
-                    </tr>
-                    <tr>
-                        <td><b>Normal/Token:</b> These cards have no effect. Tokens are cards that are not in your deck, but are instead created by other cards. They are destroyed instantly when attacked.</td>
-                        <td class="normal">Grey</td>
-                    </tr>
-                </table>
+            <div id="card-container"></div>
+            <table class="mechanic-type-table">
+                <tr>
+                    <th>Mechanic Type</th>
+                    <th>Color</th>
+                </tr>
+                <tr>
+                    <td><b>Linked:</b> This card's effect only occurs when the card's arrow is pointing to another card's arrow.</td>
+                    <td class="linked">Purple</td>
+                </tr>
+                <tr>
+                    <td><b>Trigger:</b> This cards effect only occurs when a certain condition is met, which is underlined on the card.</td>
+                    <td class="trigger">Blue</td>
+                </tr>
+                <tr>
+                    <td><b>Passive:</b> This cards effect is always active, and does not require any conditions to be met.</td>
+                    <td class="passive">Green</td>
+                </tr>
+                <tr>
+                    <td class="scrollActive" <b>Active:</b> This cards effect can only occur when the player uses an action cause it. Each card can only have their effect activated once per turn.</td>
+                    <td class="active">Orange</td>
+                </tr>
+                <tr>
+                    <td><b>Normal/Token:</b> These cards have no effect. Tokens are cards that are not in your deck, but are instead created by other cards. They are destroyed instantly when attacked.</td>
+                    <td class="normal">Grey</td>
+                </tr>
+            </table>
 
             </section>
         </section>
@@ -151,35 +127,15 @@
                 <li><b>Tier 1:</b> Requires destroying another card to play. Destroying a card sends it to the discard pile. The card must be in play on your side of the field.</li>
                 <li><b>Higher Tiers:</b> Require destroying cards whose total tier equals the tier of the card you wish to play, or a number of cards equal to the tier of the card. <br>For example, to play a Tier 4 card, you would need to destroy one of the following:</li>
             </ul>
-            <div class="card-diagrams">
-                <div class="card-diagram">
-                    <div class="diagram-description">Any 4 cards</div>
-                    <div class="card-container">
-                        <div class="card"><span class="card-number">?</span></div>
-                        <div class="card"><span class="card-number">?</span></div>
-                        <div class="card"><span class="card-number">?</span></div>
-                        <div class="card"><span class="card-number">?</span></div>
-                    </div>
-                </div>
-                <div class="card-diagram">
-                    <div class="diagram-description">Two Tier 2 cards</div>
-                    <div class="card-container">
-                        <div class="card"><span class="card-number">2</span></div>
-                        <div class="card"><span class="card-number">2</span></div>
-                    </div>
-                </div>
-                <div class="card-diagram">
-                    <div class="diagram-description">One Tier 1 and One Tier 3</div>
-                    <div class="card-container">
-                        <div class="card"><span class="card-number">1</span></div>
-                        <div class="card"><span class="card-number">3</span></div>
-                    </div>
-                </div>
+            <div class="canvas-container">
+                <canvas id="card-diagrams-canvas" width="900" height="600"></canvas>
             </div>
         </section>
     </main>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
     <script src="script.js"></script>
+    <script src="canvas-script.js"></script>
+    <script src="card-layout.js"></script>
 </body>
 </html>

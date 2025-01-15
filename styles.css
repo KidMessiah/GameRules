@@ -7,6 +7,7 @@ body {
     background: radial-gradient(circle, #222831, #121212);
     color: #f4f4f9;
     line-height: 1.8;
+    box-sizing: border-box;
 }
 
 header {
@@ -134,12 +135,14 @@ th, td {
     text-align: left;
     padding: 12px;
     background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #ddd;
 }
 
 th {
     background: linear-gradient(to bottom, #ffd700, #cc9900);
     color: #000;
     text-shadow: 1px 1px 1px #fff;
+    background-color: #f2f2f2;
 }
 
 .mechanic-type-table td:first-child {
@@ -234,6 +237,13 @@ p, ul {
     align-items: center;
     border-radius: 10px;
     position: relative;
+    word-wrap: break-word; /* Ensure long words break to the next line */
+    overflow: hidden; /* Hide overflow text */
+    text-align: center; /* Center align text */
+    padding: 10px; /* Add padding to ensure text doesn't touch the border */
+    max-width: 100%; /* Ensure the card-diagram does not exceed the container width */
+    max-height: 200px; /* Set a maximum height */
+    overflow-y: auto; /* Allow vertical scrolling if content exceeds height */
 }
 
 .diagram-description {
@@ -241,6 +251,10 @@ p, ul {
     font-weight: bold;
     color: #ffd700;
     text-align: center;
+    white-space: normal; /* Allow text to wrap to the next line */
+    word-wrap: break-word; /* Ensure long words break to the next line */
+    overflow: hidden; /* Hide overflow text */
+    max-width: 100%; /* Ensure the description does not exceed the container width */
 }
 
 .card-container {
@@ -532,4 +546,186 @@ a:hover {
     100% {
         box-shadow: 0 0 10px 0 rgba(0, 255, 0, 0.5);
     }
+}
+
+@media (max-width: 768px) {
+    header, main, section {
+        padding: 10px;
+    }
+
+    h1, h2 {
+        font-size: 1.5em;
+    }
+
+    ul, li {
+        font-size: 1em;
+    }
+
+    .action-points-table, .mechanic-type-table {
+        font-size: 0.9em;
+    }
+
+    .card-diagrams {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+        flex-wrap: wrap; /* Allow wrapping */
+    }
+
+    .card {
+        margin: 5px;
+    }
+
+    .stepmother-card-content {
+        font-size: 0.9em; /* Adjust font size for smaller screens */
+    }
+
+    .stepmother-title {
+        font-size: 1.5rem; /* Adjust title size */
+    }
+
+    .stepmother-stats {
+        font-size: 1rem; /* Adjust stats size */
+    }
+
+    .stepmother-trigger,
+    .stepmother-active {
+        font-size: 0.8rem; /* Adjust trigger and active text size */
+    }
+
+    .stepmother-family {
+        font-size: 0.8rem; /* Adjust family text size */
+    }
+
+    .card-diagrams {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .card {
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    h1, h2 {
+        font-size: 1.2em;
+    }
+
+    ul, li {
+        font-size: 0.9em;
+    }
+
+    .action-points-table, .mechanic-type-table {
+        font-size: 0.8em;
+    }
+
+    .card-diagrams {
+        flex-direction: column;
+    }
+
+    .card-container {
+        flex-direction: column;
+        flex-wrap: wrap; /* Allow wrapping */
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .card {
+        margin: 5px;
+    }
+
+    .stepmother-card-content {
+        font-size: 0.8em; /* Further adjust font size for smaller screens */
+    }
+
+    .stepmother-title {
+        font-size: 1.2rem; /* Further adjust title size */
+    }
+
+    .stepmother-stats {
+        font-size: 0.9rem; /* Further adjust stats size */
+    }
+
+    .stepmother-trigger,
+    .stepmother-active {
+        font-size: 0.7rem; /* Further adjust trigger and active text size */
+    }
+
+    .stepmother-family {
+        font-size: 0.7rem; /* Further adjust family text size */
+    }
+
+    .card-diagrams {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .card {
+        margin: 5px 0;
+    }
+}
+
+/* Canvas Style */
+.canvas-container {
+    width: 100%;
+    margin: 20px 0;
+}
+
+#card-diagrams-canvas {
+    width: 100%;
+    height: auto;
+    max-width: 900px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Tooltip styling */
+.tippy-box[data-theme~='custom'] {
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 14px;
+    max-width: 300px;
+}
+
+.tippy-box[data-theme~='custom'][data-placement^='top'] > .tippy-arrow::before {
+    border-top-color: #333;
+}
+
+/* Tooltip custom theme */
+.tippy-box[data-theme~='custom'] {
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.tippy-box[data-theme~='custom'][data-placement^='top'] > .tippy-arrow::before {
+    border-top-color: rgba(0, 0, 0, 0.9);
+}
+
+.tippy-box[data-theme~='custom'][data-placement^='right'] > .tippy-arrow::before {
+    border-right-color: rgba(0, 0, 0, 0.9);
 }
