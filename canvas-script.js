@@ -118,7 +118,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Handle window resizing
     function resize() {
         const parent = app.view.parentElement;
-        app.renderer.resize(parent.clientWidth, app.screen.height);
+        const width = parent.clientWidth;
+        const height = app.screen.height;
+        app.renderer.resize(width, height);
         draw();
     }
 
