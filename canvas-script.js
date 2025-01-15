@@ -1,14 +1,57 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const canvas = document.getElementById('card-diagrams-canvas');
-    const ctx = canvas.getContext('2d');
-    
-    // Set minimum width for each diagram group
+    const container = document.querySelector('.canvas-container');
+    const app = new PIXI.Application({
+        width: 900,
+        height: 200, // Even smaller initial height
+        backgroundAlpha: 0,
+        resolution: window.devicePixelRatio || 1,
+        antialias: true
+    });
+    container.appendChild(app.view);
+
+    // Constants
     const MIN_DIAGRAM_WIDTH = 250;
-    
-    function calculateDiagramPositions(canvasWidth) {
-        const diagramsPerRow = Math.max(1, Math.floor(canvasWidth / (MIN_DIAGRAM_WIDTH + 50)));
+
+    function createCard(text) {
+        const container = new PIXI.Container();
+        
+        // Card background
+        const card = new PIXI.Graphics();
+        const width = 50;
+        const height = 70;
+        const radius = 5;
+
+        // Draw shadow
+        const shadow = new PIXI.Graphics();
+        shadow.beginFill(0x000000, 0.3);
+        shadow.drawRoundedRect(2, 5, width, height, radius);
+        shadow.endFill();
+        shadow.filters = [new PIXI.BlurFilter(2)];
+        container.addChild(shadow);
+
+        // Draw card
+        card.lineStyle(1, 0x000000);
+        card.beginFill(0xFFFFFF);
+        card.drawRoundedRect(0, 0, width, height, radius);
+        card.endFill();
+        container.addChild(card);
+
+        // Add text with new positioning
+        const textSprite = new PIXI.Text(text, {
+            fontFamily: 'Arial',
+            fontSize: 16,
+            fill: 0x000000
+        });
+        textSprite.position.set(5, 5); // Position text in top left with 5px padding
+        container.addChild(textSprite);
+
+        return container;
+    }
+
+    function calculateDiagramPositions(width) {
+        const diagramsPerRow = Math.max(1, Math.floor(width / (MIN_DIAGRAM_WIDTH + 50)));
         const spacing = 50;
-        const availableWidth = canvasWidth - (spacing * (diagramsPerRow - 1));
+        const availableWidth = width - (spacing * (diagramsPerRow - 1));
         const diagramWidth = Math.min(250, availableWidth / diagramsPerRow);
         
         const diagrams = [
@@ -17,95 +60,75 @@ document.addEventListener('DOMContentLoaded', function () {
             { text: 'One Tier 1 and One Tier 3', cards: ['1', '3'] }
         ];
         
-        // Calculate rows needed
         const rows = Math.ceil(diagrams.length / diagramsPerRow);
-        canvas.height = rows * 150; // Adjust canvas height based on rows
+        const totalHeight = (rows * 120) + 20; // Reduced spacing between rows and padding
         
-        return diagrams.map((diagram, index) => {
-            const row = Math.floor(index / diagramsPerRow);
-            const col = index % diagramsPerRow;
-            const x = (canvasWidth - (diagramsPerRow * diagramWidth + (diagramsPerRow - 1) * spacing)) / 2 
-                     + col * (diagramWidth + spacing);
-            const y = 80 + (row * 150); // 150px vertical spacing between rows
-            return { x, y, width: diagramWidth, ...diagram };
-        });
-    }
-
-    function drawCard(ctx, x, y, number) {
-        const cardWidth = 50;
-        const cardHeight = 70;
-        const radius = 5;
-
-        ctx.save();
-        // Draw shadow and card in one pass
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
-        ctx.shadowBlur = 5;
-        ctx.shadowOffsetX = 2;
-        ctx.shadowOffsetY = 5;
-        
-        // Draw rounded rectangle card
-        ctx.fillStyle = '#fff';
-        ctx.beginPath();
-        ctx.moveTo(x + radius, y);
-        ctx.lineTo(x + cardWidth - radius, y);
-        ctx.quadraticCurveTo(x + cardWidth, y, x + cardWidth, y + radius);
-        ctx.lineTo(x + cardWidth, y + cardHeight - radius);
-        ctx.quadraticCurveTo(x + cardWidth, y + cardHeight, x + cardWidth - radius, y + cardHeight);
-        ctx.lineTo(x + radius, y + cardHeight);
-        ctx.quadraticCurveTo(x, y + cardHeight, x, y + cardHeight - radius);
-        ctx.lineTo(x, y + radius);
-        ctx.quadraticCurveTo(x, y, x + radius, y);
-        ctx.closePath();
-        ctx.fill();
-        ctx.stroke();
-
-        // Draw number
-        ctx.shadowColor = 'transparent';
-        ctx.fillStyle = '#000';
-        ctx.font = '1rem Arial';
-        ctx.fillText(number, x + 10, y + 20);
-        ctx.restore();
+        return {
+            height: totalHeight,
+            positions: diagrams.map((diagram, index) => {
+                const row = Math.floor(index / diagramsPerRow);
+                const col = index % diagramsPerRow;
+                const x = (width - (diagramsPerRow * diagramWidth + (diagramsPerRow - 1) * spacing)) / 2 
+                         + col * (diagramWidth + spacing);
+                const y = 20 + (row * 120); // Reduced top padding and row spacing
+                return { x, y, width: diagramWidth, ...diagram };
+            })
+        };
     }
 
     function draw() {
-        // Clear canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        const positions = calculateDiagramPositions(canvas.width);
-        
+        // Clear stage
+        while(app.stage.children[0]) {
+            app.stage.removeChild(app.stage.children[0]);
+        }
+
+        const { positions, height } = calculateDiagramPositions(app.screen.width);
+        app.renderer.resize(app.screen.width, height); // Adjust canvas height
+
+        const computedStyle = getComputedStyle(document.documentElement);
+        const highlightColor = computedStyle.getPropertyValue('--highlight-text').trim();
+
         positions.forEach(pos => {
-            // Get the computed highlight color based on current theme
-            const computedStyle = getComputedStyle(document.documentElement);
-            const highlightColor = computedStyle.getPropertyValue('--highlight-text');
-            
-            // Draw title with theme color
-            ctx.fillStyle = highlightColor;
-            ctx.font = 'bold 1rem Arial';
-            ctx.textAlign = 'center';
-            ctx.fillText(pos.text, pos.x + pos.width/2, pos.y - 20);
-            
-            // Center cards under text
+            // Add title
+            const title = new PIXI.Text(pos.text, {
+                fontFamily: 'Arial',
+                fontSize: 16,
+                fontWeight: 'bold',
+                fill: highlightColor
+            });
+            title.anchor.set(0.5, 0);
+            title.position.set(pos.x + pos.width/2, pos.y - 20);
+            app.stage.addChild(title);
+
+            // Add cards
             const cardWidth = 50;
             const cardSpacing = 30;
-            const totalCardsWidth = (pos.cards.length * cardWidth) + ((pos.cards.length - 1) * (cardSpacing - cardWidth));
+            const totalCardsWidth = (pos.cards.length * cardWidth) + 
+                                  ((pos.cards.length - 1) * (cardSpacing - cardWidth));
             const startX = pos.x + (pos.width - totalCardsWidth) / 2;
-            
-            // Draw cards from left to right instead of right to left
-            pos.cards.forEach((card, i) => {
-                drawCard(ctx, startX + (i * cardSpacing), pos.y, card);
+
+            pos.cards.forEach((cardText, i) => {
+                const card = createCard(cardText);
+                card.position.set(startX + (i * cardSpacing), pos.y);
+                app.stage.addChild(card);
             });
         });
     }
 
-    // Initial draw
-    draw();
-
-    // Redraw on window resize
-    window.addEventListener('resize', function() {
-        canvas.width = canvas.offsetWidth;
+    // Handle window resizing
+    function resize() {
+        const parent = app.view.parentElement;
+        app.renderer.resize(parent.clientWidth, app.screen.height);
         draw();
-    });
+    }
 
-    // Trigger initial resize
-    window.dispatchEvent(new Event('resize'));
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Handle theme changes
+    const observer = new MutationObserver(() => draw());
+    observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['data-theme']
+    });
 });
