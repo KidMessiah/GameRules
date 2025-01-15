@@ -43,6 +43,12 @@
     --highlight-text: #ffd700; /* yellow for dark mode */
 }
 
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;

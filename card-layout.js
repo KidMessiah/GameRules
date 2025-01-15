@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('card-container');
-    container.style.width = '50%'; // Set container width to 50% of the body
+    container.style.width = '100%'; // Set container width to 100% for responsiveness
+    container.style.maxWidth = '600px'; // Set a max-width for larger screens
     container.style.margin = '0 auto'; // Center the container
     
     function initializeCard() {
@@ -52,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tip.style.width = area.width;
             tip.style.height = area.height;
             tip.style.pointerEvents = 'auto'; // Enable hover events
-            tip.style.border = '1px dotted red'; // Add dotted red border
+            tip.style.border = '0px dotted red'; // Add dotted red border
             tip.setAttribute('data-tippy-content', area.content);
             overlay.appendChild(tip);
         });

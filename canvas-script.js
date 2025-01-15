@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const container = document.querySelector('.canvas-container');
     const app = new PIXI.Application({
         width: 900,
-        height: 200, // Even smaller initial height
+        height: 200, // Even smaller initial heght
         backgroundAlpha: 0,
         resolution: window.devicePixelRatio || 1,
         antialias: true
