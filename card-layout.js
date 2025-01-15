@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // White content area
     const content = new PIXI.Graphics();
     content.lineStyle(0);
-    content.beginFill(0xFFFFFF);
+    content.beginFill(0xFFFFFF); // Keep this white always
     content.drawRect(20, 20, 260, 380);
     content.endFill();
     card.addChild(content);

@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
         ctx.shadowColor = 'transparent';
         ctx.fillStyle = '#000';
         ctx.font = '1rem Arial';
-        ctx.fillText(number, x + 5, y + 20);
+        ctx.fillText(number, x + 10, y + 20);
         ctx.restore();
     }
 
@@ -74,8 +74,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const positions = calculateDiagramPositions(canvas.width);
         
         positions.forEach(pos => {
-            // Draw title
-            ctx.fillStyle = '#ffd700';
+            // Get the computed highlight color based on current theme
+            const computedStyle = getComputedStyle(document.documentElement);
+            const highlightColor = computedStyle.getPropertyValue('--highlight-text');
+            
+            // Draw title with theme color
+            ctx.fillStyle = highlightColor;
             ctx.font = 'bold 1rem Arial';
             ctx.textAlign = 'center';
             ctx.fillText(pos.text, pos.x + pos.width/2, pos.y - 20);
@@ -86,10 +90,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const totalCardsWidth = (pos.cards.length * cardWidth) + ((pos.cards.length - 1) * (cardSpacing - cardWidth));
             const startX = pos.x + (pos.width - totalCardsWidth) / 2;
             
-            // Draw cards from right to left
-            for (let i = pos.cards.length - 1; i >= 0; i--) {
-                drawCard(ctx, startX + (i * cardSpacing), pos.y, pos.cards[i]);
-            }
+            // Draw cards from left to right instead of right to left
+            pos.cards.forEach((card, i) => {
+                drawCard(ctx, startX + (i * cardSpacing), pos.y, card);
+            });
         });
     }
 

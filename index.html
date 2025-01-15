@@ -9,18 +9,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.3.2/pixi.min.js"></script>
 </head>
 <body>
+    <!-- Only one theme toggle button -->
+    <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+    
     <header>
-        <h1>Card Game Rules</h1>
+        <div class="header-container">
+            <h1>Card Game Rules</h1>
+        </div>
     </header>
     <main>
         <section id="general-rules">
             <h2>General Rules</h2>
             <ul>
-                <li><b>Setup:</b> Shuffle your deck and draw <span style="color: #4caf50;">5 cards</span> to start. The player with the highest total <span style="color: #e91e63;">attack damage</span> goes first. If there's a tie or no attack damage, the player with the most <span style="color: #ffeb3b;">arrows</span> goes first.</li>
-                <li><b>Deck Composition:</b> Each deck must contain exactly <b style="color: #0288d1;">40 cards</b>, including at least <b style="color: #4caf50;">5 attack cards</b> and <b style="color: #f44336;">5 defense cards</b>. A maximum of <b style="color: #ff9800;">3 copies</b> of any single card is allowed per deck.</li>
-                <li><b>Win Condition:</b> Each player starts with <b style="color: #ff9800;">3 hit points</b>. When they are <b style="color: #e91e63;">reduced to zero</b>, or you attempt to draw and your deck is <b style="color: #ffeb3b;">empty</b> you lose.</li>
-                <li><b>Drawing Cards:</b> Players draw <b style="color: #4caf50;">5 cards</b> at the start of the game and <b style="color: #4caf50;">one additional card</b> at the beginning of each turn.</li>
-                <li><b>Action Points:</b> Each player gets <b style="color: #ff9800;">3 action points</b> per round. Actions include:</li>
+                <li><b>Setup:</b> Shuffle your deck and draw <span class="highlight-defense">5 cards</span> to start. The player with the highest total <b class="highlight-attack">attack damage</b> goes first. If there's a tie or no attack damage, the player with the most <span class="highlight-arrows">arrows</span> goes first.</li>
+                <li><b>Deck Composition:</b> Each deck must contain exactly <b class="highlight-link">40 cards</b>, including at least <b class="highlight-defense">5 attack cards</b> and <b class="highlight-attack">5 defense cards</b>. A maximum of <b class="highlight-action">3 copies</b> of any single card is allowed per deck.</li>
+                <li><b>Win Condition:</b> Each player starts with <b class="highlight-action">3 hit points</b>. When they are <b class="highlight-attack">reduced to zero</b>, or you attempt to draw and your deck is <b class="highlight-arrows">empty</b> you lose.</li>
+                <li><b>Drawing Cards:</b> Players draw <b class="highlight-defense">5 cards</b> at the start of the game and <b class="highlight-defense">one additional card</b> at the beginning of each turn.</li>
+                <li><b>Action Points:</b> Each player gets <b class="highlight-action">3 action points</b> per round. Actions include:</li>
             </ul>
             <table class="action-points-table">
                 <tr>
@@ -92,7 +97,7 @@
                     <td class="passive">Green</td>
                 </tr>
                 <tr>
-                    <td class="scrollActive" <b>Active:</b> This cards effect can only occur when the player uses an action cause it. Each card can only have their effect activated once per turn.</td>
+                    <td class="scrollActive"><b>Active:</b> This cards effect can only occur when the player uses an action cause it. Each card can only have their effect activated once per turn.</td>
                     <td class="active">Orange</td>
                 </tr>
                 <tr>
@@ -106,16 +111,16 @@
         <section id="attacking-defending">
             <h2>Attacking and Defending</h2>
             <ul>
-                <li><b>Positioning: </b>Cards can attack when they are in the <b style="color: #ff9800;">front row</b> and have an attack greater than 0. Cards can target the next enemy card in front of them.</li>
-                <li><span class="subtext">If there is a card in the <b style="color: #32cd32;">2nd row</b> and there's an empty space between your card and the opponent's, you can attack it. Same goes for the <b style="color: #32cd32;">3rd row</b> and 2 spaces between your card and the opponent's.<br>If there are no cards in the column in front of your card, it can attack your opponent directly, reducing their hit-points by 1. You can only attack directly once per turn.</span></li>
+                <li><b>Positioning: </b>Cards can attack when they are in the <b class="highlight-action">front row</b> and have an attack greater than 0. Cards can target the next enemy card in front of them.</li>
+                <li><span class="subtext">If there is a card in the <b class="highlight-defense">2nd row</b> and there's an empty space between your card and the opponent's, you can attack it. Same goes for the <b class="highlight-defense">3rd row</b> and 2 spaces between your card and the opponent's.<br>If there are no cards in the column in front of your card, it can attack your opponent directly, reducing their hit-points by 1. You can only attack directly once per turn.</span></li>
                 <li>When an <b>attack</b> is made, you compare your cards attack, to the target cards defence:
                     <ul>
-                        <li id="equal">If the cards have equal attack and defence: <b style="color: #e91e63;">Destroy both your card and the target.</b></li>
-                        <li id="sword">If your cards attack is greater than the target cards defence: <b style="color: #4caf50;">Destroy the target.</b></li>
-                        <li id="destroy">If your cards attack is lower the targets defence: <b style="color: #f44336;">Destroy your card.</b></li>
+                        <li id="equal">If the cards have equal attack and defence: <b class="highlight-attack">Destroy both your card and the target.</b></li>
+                        <li id="sword">If your cards attack is greater than the target cards defence: <b class="highlight-defense">Destroy the target.</b></li>
+                        <li id="destroy">If your cards attack is lower the targets defence: <b class="highlight-attack">Destroy your card.</b></li>
                     </ul>
                 </li>
-                <li><b>Restrictions: </b>Cards that have <b style="color:#32cd32;">been played this turn</b>, or cards that have <b style="color: #e91e63;">destroyed a card that has attacked this turn</b> in order to be played cannot attack until the <b style="color:#ff9800;">start of your next turn.</b></b></li>
+                <li><b>Restrictions: </b>Cards that have <b class="highlight-defense">been played this turn</b>, or cards that have <b class="highlight-attack">destroyed a card that has attacked this turn</b> in order to be played cannot attack until the <b class="highlight-action">start of your next turn.</b></b></li>
             </ul>
         </section>
         <section id="card-play-costs">
@@ -129,6 +134,7 @@
             </ul>
             <div class="canvas-container">
                 <canvas id="card-diagrams-canvas" width="900" height="600"></canvas>
+                <br>
             </div>
         </section>
     </main>
