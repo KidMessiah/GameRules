@@ -1,0 +1,324 @@
+[
+  {
+    "fileName": "Acrob Rat-0-Rats.jpg",
+    "name": "Acrob Rat",
+    "tier": "0",
+    "tag": "Rats",
+    "imagePath": "data/Acrob Rat-0-Rats.jpg"
+  },
+  {
+    "fileName": "Agent Rat-2-Rats.jpg",
+    "name": "Agent Rat",
+    "tier": "2",
+    "tag": "Rats",
+    "imagePath": "data/Agent Rat-2-Rats.jpg"
+  },
+  {
+    "fileName": "Allosaurus-3-Dinosaur.jpg",
+    "name": "Allosaurus",
+    "tier": "3",
+    "tag": "Dinosaur",
+    "imagePath": "data/Allosaurus-3-Dinosaur.jpg"
+  },
+  {
+    "fileName": "Amadillo-1-Generic.jpg",
+    "name": "Amadillo",
+    "tier": "1",
+    "tag": "Generic",
+    "imagePath": "data/Amadillo-1-Generic.jpg"
+  },
+  {
+    "fileName": "Ankylosaurus-2-Dinosaur.jpg",
+    "name": "Ankylosaurus",
+    "tier": "2",
+    "tag": "Dinosaur",
+    "imagePath": "data/Ankylosaurus-2-Dinosaur.jpg"
+  },
+  {
+    "fileName": "Baby-0-Rats.jpg",
+    "name": "Baby",
+    "tier": "0",
+    "tag": "Rats",
+    "imagePath": "data/Baby-0-Rats.jpg"
+  },
+  {
+    "fileName": "Brachiosaurus-1-Dinosaur.jpg",
+    "name": "Brachiosaurus",
+    "tier": "1",
+    "tag": "Dinosaur",
+    "imagePath": "data/Brachiosaurus-1-Dinosaur.jpg"
+  },
+  {
+    "fileName": "Brother-1-Family.jpg",
+    "name": "Brother",
+    "tier": "1",
+    "tag": "Family",
+    "imagePath": "data/Brother-1-Family.jpg"
+  },
+  {
+    "fileName": "Chill Rat-0-Rats.jpg",
+    "name": "Chill Rat",
+    "tier": "0",
+    "tag": "Rats",
+    "imagePath": "data/Chill Rat-0-Rats.jpg"
+  },
+  {
+    "fileName": "Coughing Baby-0-Family.jpg",
+    "name": "Coughing Baby",
+    "tier": "0",
+    "tag": "Family",
+    "imagePath": "data/Coughing Baby-0-Family.jpg"
+  },
+  {
+    "fileName": "Crab-2-Water.jpg",
+    "name": "Crab",
+    "tier": "2",
+    "tag": "Water",
+    "imagePath": "data/Crab-2-Water.jpg"
+  },
+  {
+    "fileName": "Distant Cousin-0-Family.jpg",
+    "name": "Distant Cousin",
+    "tier": "0",
+    "tag": "Family",
+    "imagePath": "data/Distant Cousin-0-Family.jpg"
+  },
+  {
+    "fileName": "Dodo Bird-0-Dinosaur.jpg",
+    "name": "Dodo Bird",
+    "tier": "0",
+    "tag": "Dinosaur",
+    "imagePath": "data/Dodo Bird-0-Dinosaur.jpg"
+  },
+  {
+    "fileName": "Father-1-Family.jpg",
+    "name": "Father",
+    "tier": "1",
+    "tag": "Family",
+    "imagePath": "data/Father-1-Family.jpg"
+  },
+  {
+    "fileName": "Freaky Frog-1-Water.jpg",
+    "name": "Freaky Frog",
+    "tier": "1",
+    "tag": "Water",
+    "imagePath": "data/Freaky Frog-1-Water.jpg"
+  },
+  {
+    "fileName": "Funcle-2-Family.jpg",
+    "name": "Funcle",
+    "tier": "2",
+    "tag": "Family",
+    "imagePath": "data/Funcle-2-Family.jpg"
+  },
+  {
+    "fileName": "Grandma-3-Family.jpg",
+    "name": "Grandma",
+    "tier": "3",
+    "tag": "Family",
+    "imagePath": "data/Grandma-3-Family.jpg"
+  },
+  {
+    "fileName": "Grandpa-3-Family.jpg",
+    "name": "Grandpa",
+    "tier": "3",
+    "tag": "Family",
+    "imagePath": "data/Grandpa-3-Family.jpg"
+  },
+  {
+    "fileName": "Hold Hands-1-Generic.jpg",
+    "name": "Hold Hands",
+    "tier": "1",
+    "tag": "Generic",
+    "imagePath": "data/Hold Hands-1-Generic.jpg"
+  },
+  {
+    "fileName": "Hunter-4-Generic.jpg",
+    "name": "Hunter",
+    "tier": "4",
+    "tag": "Generic",
+    "imagePath": "data/Hunter-4-Generic.jpg"
+  },
+  {
+    "fileName": "Hydrogen Bomb-4-Family.jpg",
+    "name": "Hydrogen Bomb",
+    "tier": "4",
+    "tag": "Family",
+    "imagePath": "data/Hydrogen Bomb-4-Family.jpg"
+  },
+  {
+    "fileName": "Jetpack-2-Generic.jpg",
+    "name": "Jetpack",
+    "tier": "2",
+    "tag": "Generic",
+    "imagePath": "data/Jetpack-2-Generic.jpg"
+  },
+  {
+    "fileName": "Jimbo-3-Generic.jpg",
+    "name": "Jimbo",
+    "tier": "3",
+    "tag": "Generic",
+    "imagePath": "data/Jimbo-3-Generic.jpg"
+  },
+  {
+    "fileName": "Microraptor-0-Dinosaur.jpg",
+    "name": "Microraptor",
+    "tier": "0",
+    "tag": "Dinosaur",
+    "imagePath": "data/Microraptor-0-Dinosaur.jpg"
+  },
+  {
+    "fileName": "Mother-3-Family.jpg",
+    "name": "Mother",
+    "tier": "3",
+    "tag": "Family",
+    "imagePath": "data/Mother-3-Family.jpg"
+  },
+  {
+    "fileName": "Nephew-2-Family.jpg",
+    "name": "Nephew",
+    "tier": "2",
+    "tag": "Family",
+    "imagePath": "data/Nephew-2-Family.jpg"
+  },
+  {
+    "fileName": "Oryctodremus-1-Dinosaur.jpg",
+    "name": "Oryctodremus",
+    "tier": "1",
+    "tag": "Dinosaur",
+    "imagePath": "data/Oryctodremus-1-Dinosaur.jpg"
+  },
+  {
+    "fileName": "Pixie-0-Generic.jpg",
+    "name": "Pixie",
+    "tier": "0",
+    "tag": "Generic",
+    "imagePath": "data/Pixie-0-Generic.jpg"
+  },
+  {
+    "fileName": "Programmer-3-Generic.jpg",
+    "name": "Programmer",
+    "tier": "3",
+    "tag": "Generic",
+    "imagePath": "data/Programmer-3-Generic.jpg"
+  },
+  {
+    "fileName": "Rage Rat-1-Rats.jpg",
+    "name": "Rage Rat",
+    "tier": "1",
+    "tag": "Rats",
+    "imagePath": "data/Rage Rat-1-Rats.jpg"
+  },
+  {
+    "fileName": "Raging Bull-1-Generic.jpg",
+    "name": "Raging Bull",
+    "tier": "1",
+    "tag": "Generic",
+    "imagePath": "data/Raging Bull-1-Generic.jpg"
+  },
+  {
+    "fileName": "Rat Cannibal-4-Rats.jpg",
+    "name": "Rat Cannibal",
+    "tier": "4",
+    "tag": "Rats",
+    "imagePath": "data/Rat Cannibal-4-Rats.jpg"
+  },
+  {
+    "fileName": "Rat Farmer-0-Rats.jpg",
+    "name": "Rat Farmer",
+    "tier": "0",
+    "tag": "Rats",
+    "imagePath": "data/Rat Farmer-0-Rats.jpg"
+  },
+  {
+    "fileName": "Rat King-1-Rats.jpg",
+    "name": "Rat King",
+    "tier": "1",
+    "tag": "Rats",
+    "imagePath": "data/Rat King-1-Rats.jpg"
+  },
+  {
+    "fileName": "Rat Summoner-3-Rats.jpg",
+    "name": "Rat Summoner",
+    "tier": "3",
+    "tag": "Rats",
+    "imagePath": "data/Rat Summoner-3-Rats.jpg"
+  },
+  {
+    "fileName": "Rat-0-Rats.jpg",
+    "name": "Rat",
+    "tier": "0",
+    "tag": "Rats",
+    "imagePath": "data/Rat-0-Rats.jpg"
+  },
+  {
+    "fileName": "Sailor Rat-0-Rats.jpg",
+    "name": "Sailor Rat",
+    "tier": "0",
+    "tag": "Rats",
+    "imagePath": "data/Sailor Rat-0-Rats.jpg"
+  },
+  {
+    "fileName": "Sister-2-Family.jpg",
+    "name": "Sister",
+    "tier": "2",
+    "tag": "Family",
+    "imagePath": "data/Sister-2-Family.jpg"
+  },
+  {
+    "fileName": "Spinosaurus-1-Dinosaur.jpg",
+    "name": "Spinosaurus",
+    "tier": "1",
+    "tag": "Dinosaur",
+    "imagePath": "data/Spinosaurus-1-Dinosaur.jpg"
+  },
+  {
+    "fileName": "Stepmother-2-Family.jpg",
+    "name": "Stepmother",
+    "tier": "2",
+    "tag": "Family",
+    "imagePath": "data/Stepmother-2-Family.jpg"
+  },
+  {
+    "fileName": "Time Traveller-4-Generic.jpg",
+    "name": "Time Traveller",
+    "tier": "4",
+    "tag": "Generic",
+    "imagePath": "data/Time Traveller-4-Generic.jpg"
+  },
+  {
+    "fileName": "Trex-4-Dinosaur.jpg",
+    "name": "Trex",
+    "tier": "4",
+    "tag": "Dinosaur",
+    "imagePath": "data/Trex-4-Dinosaur.jpg"
+  },
+  {
+    "fileName": "Triceratops-3-Dinosaur.jpg",
+    "name": "Triceratops",
+    "tier": "3",
+    "tag": "Dinosaur",
+    "imagePath": "data/Triceratops-3-Dinosaur.jpg"
+  },
+  {
+    "fileName": "Twigs-Token-Dinosaur.jpg",
+    "name": "Twigs",
+    "tier": "Token",
+    "tag": "Dinosaur",
+    "imagePath": "data/Twigs-Token-Dinosaur.jpg"
+  },
+  {
+    "fileName": "Whale-2-Water.jpg",
+    "name": "Whale",
+    "tier": "2",
+    "tag": "Water",
+    "imagePath": "data/Whale-2-Water.jpg"
+  },
+  {
+    "fileName": "Wolf-0-Generic.jpg",
+    "name": "Wolf",
+    "tier": "0",
+    "tag": "Generic",
+    "imagePath": "data/Wolf-0-Generic.jpg"
+  }
+]
