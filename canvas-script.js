@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.querySelector('.canvas-container');
     const app = new PIXI.Application({
-        width: 900,
-        height: 200,
+        width: container.clientWidth,
+        height: container.clientHeight,
         backgroundAlpha: 0,
         resolution: window.devicePixelRatio || 1,
         antialias: true
@@ -68,8 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const draw = () => {
         app.stage.removeChildren();
-        const { positions, height } = calculateDiagramPositions(app.screen.width);
-        app.renderer.resize(app.screen.width, height);
+        const { positions, height } = calculateDiagramPositions(container.clientWidth);
+        app.renderer.resize(container.clientWidth, height);
 
         const highlightColor = getComputedStyle(document.documentElement).getPropertyValue('--highlight-text').trim();
 
@@ -99,7 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const resize = () => {
         const width = container.clientWidth;
-        app.renderer.resize(width, app.screen.height);
+        const height = container.clientHeight;
+        app.renderer.resize(width, height);
         draw();
     };
 
