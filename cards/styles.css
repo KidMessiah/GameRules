@@ -1,3 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --background: #1a1a1a;
+    --text: #ffffff;
+    --link: #64b5f6;
+    --attack: #ff0000;
+    --defense: #69f0ae;
+    --arrows: #ffeb3b;
+    --action: #ff9800;
+    --linked: #ce93d8;
+    --trigger: #64b5f6;
+    --passive: #81c784;
+    --active: #ffb74d;
+    --normal: #bdbdbd;
+    --links: #ff69b4;
+    --highlight-text: #ff8c00;
+    --glow-color: #4CAF50;
+    --site-background: #0f0f0f;
+    --body-background: #1a1a1a;
+}
+
+[data-theme="light"] {
+    --background: #f5f5f5;
+    --text: #000000;
+    --link: #1976d2;
+    --attack: #ff0000;
+    --defense: #2e7d32;
+    --arrows: #f57f17;
+    --action: #e65100;
+    --linked: #7b1fa2;
+    --trigger: #0d47a1;
+    --passive: #1b5e20;
+    --active: #e65100;
+    --normal: #616161;
+    --links: #0000ff;
+    --highlight-text: #ff8c00;
+    --site-background: #e0e0e0;
+    --body-background: #f5f5f5;
+}
+
+[data-theme="dark"] {
+    --highlight-text: #ffd700;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,15 +50,19 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--site-background);
+    color: var(--text);
     line-height: 1.6;
+    min-height: 100vh;
 }
 
 .container {
-    max-width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    background: var(--body-background);
+    min-height: 100vh;
 }
 
 header {
@@ -22,8 +71,10 @@ header {
 }
 
 h1 {
-    color: #333;
+    color: var(--highlight-text);
     margin-bottom: 1rem;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .search-section {
@@ -31,39 +82,36 @@ h1 {
     gap: 10px;
     justify-content: center;
     margin-bottom: 2rem;
-    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    flex-wrap: wrap;
 }
 
-#searchInput {
-    padding: 8px;
-    width: 100%; /* Full width on small screens */
-    max-width: 300px; /* Maximum width on larger screens */
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
+#searchInput,
 #filterType,
 #filterTier {
     padding: 8px;
-    border: 1px solid #ddd;
+    background: var(--background);
+    color: var(--text);
+    border: 1px solid var(--action);
     border-radius: 4px;
-    width: 100%; /* Full width on small screens */
-    max-width: 200px; /* Maximum width on larger screens */
+    width: 100%;
+    max-width: 200px;
 }
 
 #searchButton {
     padding: 8px 16px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--action);
+    color: var(--text);
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    width: 100%; /* Full width on small screens */
-    max-width: 200px; /* Maximum width on larger screens */
+    width: 100%;
+    max-width: 200px;
+    transition: all 0.3s ease;
 }
 
 #searchButton:hover {
-    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px var(--action);
 }
 
 #pixiContainer {
@@ -72,8 +120,6 @@ h1 {
     overflow: hidden;
     position: relative;
 }
-
-/* Remove old card-grid styles as we'll use PIXI for rendering */
 
 #loading {
     position: absolute;
@@ -110,15 +156,15 @@ h1 {
 }
 
 .card {
-    background: white;
+    background: var(--background);
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
     overflow: hidden;
     transition: transform 0.2s;
-    /* Remove any fixed height constraints */
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid var(--action);
 }
 
 .card:hover {
@@ -127,14 +173,11 @@ h1 {
 
 .card img {
     width: 100%;
-    height: auto; /* Allow height to adjust automatically */
-    object-fit: contain; /* Show entire image */
-    display: block; /* Remove any extra spacing */
+    height: auto;
+    object-fit: contain;
+    display: block;
 }
 
-/* Remove .card-info styles as they're no longer needed */
-
-/* Add at the end of the file */
 .overlay {
     display: none;
     position: fixed;
@@ -154,12 +197,55 @@ h1 {
 }
 
 .overlay img {
-    max-width: 80vw;
-    max-height: 80vh;
+    max-width: 95vw;
+    max-height: 95vh;
     object-fit: contain;
 }
 
-/* Add media query for smaller screens */
+.nav-button {
+    position: fixed;
+    top: 1vmin;
+    left: 1vmin;
+    padding: 1vmin 2vmin;
+    font-size: clamp(12px, 2vmin, 20px);
+    border-radius: 0.5vmin;
+    z-index: 1000;
+    background-color: var(--background);
+    color: var(--text);
+    border: 2px solid var(--action);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.nav-button:hover {
+    background-color: var(--action);
+    color: var(--background);
+    transform: scale(1.1);
+}
+
+#theme-toggle {
+    position: fixed;
+    top: 1vmin;
+    right: 4vmin;
+    padding: 1vmin;
+    font-size: clamp(12px, 2vmin, 20px);
+    width: clamp(30px, 5vmin, 50px);
+    height: clamp(30px, 5vmin, 50px);
+    border-radius: 50%;
+    z-index: 1000;
+    background-color: var(--background);
+    color: var(--text);
+    border: 2px solid var(--action);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+    background-color: var(--action);
+    color: var(--background);
+    transform: scale(1.1);
+}
+
 @media (max-width: 768px) {
     .search-section {
         flex-direction: column;

@@ -1,81 +1,80 @@
+// Import required Node.js modules
+// 'const' declares a variable that cannot be reassigned
+// 'fs' is Node's built-in file system module for working with files
 const fs = require('fs');
+// 'path' module helps handle file paths across different operating systems
 const path = require('path');
 
-// Get absolute paths and enable debug mode
+// Get current working directory and define important paths
+// 'process.cwd()' returns the current working directory
 const currentDir = process.cwd();
+// Define path to the data directory where images are stored
 const DATA_DIR = path.join(currentDir, 'data');
+// Define path for the output JSON file
 const OUTPUT_FILE = path.join(currentDir, 'cards.json');
 
-// Add debug info
-process.on('uncaughtException', (err) => {
-    console.error('Uncaught Exception:', err);
-    process.exit(1);
-});
-
-console.log('\n=== Debug Information ===');
-console.log('Node version:', process.version);
-console.log('Current directory:', currentDir);
-console.log('Data directory:', DATA_DIR);
-console.log('Output file:', OUTPUT_FILE);
-console.log('=====================\n');
-
+// Function declaration to parse filenames into card data
+// Functions are reusable blocks of code that perform specific tasks
 function parseFileName(fileName) {
-    // Remove file extension
+    // Remove file extension from filename (e.g., .jpg, .png)
+    // Regular expression /\.[^/.]+$/ matches the last dot and everything after it
     const nameWithoutExt = fileName.replace(/\.[^/.]+$/, "");
+    
+    // Split filename into components using '-' as separator
+    // Array destructuring assigns each part to a variable
     const [name, tier, tag] = nameWithoutExt.split('-');
     
+    // Return an object with card properties
     return {
-        fileName,
-        name,
-        tier,
-        tag,
-        imagePath: `data/${fileName}`
+        fileName,    // Original filename
+        name,        // Card name
+        tier,        // Card tier
+        tag,         // Card tag
+        imagePath: `data/${fileName}`  // Path to image file
     };
 }
 
+// Main function that builds the card database
 function buildCardDatabase() {
     try {
-        // Verify data directory exists
+        // Check if data directory exists
         if (!fs.existsSync(DATA_DIR)) {
             throw new Error(`Data directory not found at: ${DATA_DIR}`);
         }
 
-        // Get list of files
+        // Read all files in the data directory
         const files = fs.readdirSync(DATA_DIR);
         
+        // Check if directory is empty
         if (files.length === 0) {
             throw new Error('Data directory is empty!');
         }
 
-        console.log('\nFound files:');
-        files.forEach(file => console.log('  -', file));
-
-        // Filter image files
+        // Filter for image files only using regular expression
+        // Test for .jpg, .jpeg, or .png extensions (case insensitive)
         const imageFiles = files.filter(file => /\.(jpg|jpeg|png)$/i.test(file));
         
+        // Check if any image files were found
         if (imageFiles.length === 0) {
             throw new Error('No image files found in data directory!');
         }
 
-        // Process cards
-        const cards = imageFiles.map(fileName => {
-            const cardData = parseFileName(fileName);
-            console.log('Processing:', fileName, '→', cardData);
-            return cardData;
-        });
+        // Process each image file into card data
+        // 'map' creates a new array by transforming each element
+        const cards = imageFiles.map(fileName => parseFileName(fileName));
 
-        // Write JSON file
+        // Write the card data to JSON file
+        // JSON.stringify converts JavaScript object to JSON string
+        // null, 2 parameters make the output formatted and indented
         fs.writeFileSync(OUTPUT_FILE, JSON.stringify(cards, null, 2));
-        console.log(`\nSuccess! Created ${OUTPUT_FILE} with ${cards.length} cards`);
+        console.log(`Created ${OUTPUT_FILE} with ${cards.length} cards`);
 
     } catch (error) {
-        console.error('\nERROR:', error.message);
-        console.error('\nPlease make sure:');
-        console.error('1. You are in the correct directory when running this script');
-        console.error('2. The "data" folder exists and contains image files');
-        console.error('3. Image files are named correctly (example: CardName-1-Type.jpg)');
+        // Error handling: log error and exit program with error code
+        console.error('Error:', error.message);
         process.exit(1);
     }
 }
 
+// Execute the main function
 buildCardDatabase();

@@ -440,17 +440,14 @@ a:hover {
 /* Update themed button */
 #theme-toggle {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 10px 15px;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    cursor: pointer;
+    top: 1vmin;
+    right: 4vmin; /* Changed from 1vmin to 7vmin to move it left */
+    padding: 1vmin;
+    font-size: clamp(12px, 2vmin, 20px);
+    width: clamp(30px, 5vmin, 50px);
+    height: clamp(30px, 5vmin, 50px);
+    border-radius: 50%;
     z-index: 1000;
-    background-color: var(--background);
-    color: var(--text);
-    border: 2px solid var(--action);
-    transition: all 0.3s ease;
 }
 
 #theme-toggle:hover {
@@ -462,12 +459,11 @@ a:hover {
 /* Navigation button style */
 .nav-button {
     position: fixed;
-    top: 20px;
-    left: 20px;
-    padding: 10px 15px;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    cursor: pointer;
+    top: 1vmin;
+    left: 1vmin;
+    padding: 1vmin 2vmin;
+    font-size: clamp(12px, 2vmin, 20px);
+    border-radius: 0.5vmin;
     z-index: 1000;
     background-color: var(--background);
     color: var(--text);

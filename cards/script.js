@@ -154,3 +154,24 @@ document.addEventListener('DOMContentLoaded', () => {
         cardManager.renderCards(filteredCards);
     });
 });
+
+// Add theme toggle functionality
+const themeToggle = document.getElementById('theme-toggle');
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+// Function to update theme and button text
+function updateTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
+    localStorage.setItem('theme', theme);
+}
+
+// Set initial theme
+const initialTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+updateTheme(initialTheme);
+
+themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    updateTheme(newTheme);
+});
